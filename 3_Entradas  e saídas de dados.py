@@ -1,0 +1,5 @@
+A = input("Digite um número: ")
+print(A)
+B = int(input())
+C = int(input())
+print(B + C)
