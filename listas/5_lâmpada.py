@@ -1,15 +1,23 @@
-numeroTROCA = int(input())
-numero = input().split()
+class ArvoreFewick:
+    def init(self, N):
+        self.__n = N
+        self.__BIT = [0 for i in range(N + 1)]
 
-print (numero)
-lampA = 0
-lampB = 0
+    def update(self, i, x):
+        j = i
 
-for c in numero:
-    if c == '1':
-        lampA = 1 - lampA  # Alternar o estado da lâmpada A
-    elif c == '2':
-        lampA, lampB = 1 - lampA, 1 - lampB  # Alternar ambos os estados das lâmpadas
+        while j <= self.__n:
+            self.__BIT[j] += x
+            j += (j & -j)
 
-print(lampA)
-print(lampB)
+    def query(self, l, r):
+        return self.__get_sum(r) - self.__get_sum(l - 1)
+
+    def __get_sum(self, i):
+        sum, j = i
+
+        while j > 0:
+            sum += self.__BIT[j]
+            j -= j & -j
+
+        return sum
