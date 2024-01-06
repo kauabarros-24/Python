@@ -1,4 +1,4 @@
-risada = input("Digite a risada: ")
+risada = input()
 gambeta = ""
 
 for r in risada.lower():
