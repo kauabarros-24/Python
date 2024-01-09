@@ -11,6 +11,6 @@ alunos = {
     "Mathias": 6
 }
 dicio = {
-    chave.upper(): valor + 1 for chave, valor in alunos.items()
+    chave.upper(): valor + 1 if valor <= 9 else valor for chave, valor in alunos.items()
 }
 print(dicio)
